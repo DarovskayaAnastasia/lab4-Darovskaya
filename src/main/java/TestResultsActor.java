@@ -1,5 +1,6 @@
 import akka.actor.AbstractActor;
 import akka.actor.OneForOneStrategy;
+import akka.actor.Props;
 import akka.actor.SupervisorStrategy;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
@@ -31,6 +32,8 @@ public class TestResultsActor extends AbstractActor {
                 }).build();
     }
 
-    
+    static Props props() {
+        return Props.create(TestRunnerActor.class);
+    }
 
 }
