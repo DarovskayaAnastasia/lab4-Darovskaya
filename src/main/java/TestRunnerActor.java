@@ -8,6 +8,9 @@ import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
 import scala.concurrent.duration.Duration;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 import static akka.actor.SupervisorStrategy.*;
 
 public class TestRunnerActor extends AbstractActor {
@@ -17,7 +20,9 @@ public class TestRunnerActor extends AbstractActor {
 
     public TestRunnerActor() {}
 
-    
+    private static test() {
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+    }
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
