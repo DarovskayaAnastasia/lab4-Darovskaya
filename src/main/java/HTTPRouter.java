@@ -12,11 +12,6 @@ public class HTTPRouter {
         this.router = router;
     }
 
-    private Route createRoute() {
-        return route(
-                path(path, () ->
-                        post(() -> entity()))
-        )
-    }
+
 }
 
