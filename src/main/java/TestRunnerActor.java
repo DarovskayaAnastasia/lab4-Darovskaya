@@ -8,7 +8,7 @@ import scala.concurrent.duration.Duration;
 
 import static akka.actor.SupervisorStrategy.*;
 
-public class TestRunnerActor extends AbstractActor extends AbstractActor {
+public class TestRunnerActor extends AbstractActor {
 
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
