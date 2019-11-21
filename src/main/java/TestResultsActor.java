@@ -24,7 +24,7 @@ public class TestResultsActor extends AbstractActor {
     }
 
     @Override
-    public AbstractActor.Receive createReceive() {
+    public Receive createReceive() {
         return receiveBuilder()
                 .match(StoreMessage.class, m -> {
                     sender().tell(Msg.oneTestResultRequest, self());
