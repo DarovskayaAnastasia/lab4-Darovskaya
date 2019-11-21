@@ -1,14 +1,16 @@
 import akka.actor.AbstractActor;
 
-public class TestResultsActor {
+public class TestResultsActor extends AbstractActor {
     public static enum Msg {
-        oneTestResult, getOneTestResultRequest
+        oneTestResult, OneTestResultRequest
     }
 
     @Override
     public AbstractActor.Receive createReceive() {
         return receiveBuilder()
-                .matchEquals().build();
+                .matchEquals(Msg.oneTestResult, m -> {
+
+                }).build();
     }
 
 }
