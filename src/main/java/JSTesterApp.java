@@ -15,9 +15,9 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp extends AbstractActor {
 
-    static void startHttpServer(Route route, ActorSystem<?> system) {
+    static void startHttpServer(Route route, ActorSystem system) {
         // Akka HTTP still needs a classic ActorSystem to start
-        akka.actor.ActorSystem classicSystem = Adapter.toClassic(system);
+        akka.actor.ActorSystem classicSystem = ActorSystem.create("local_server");
         final Http http = Http.get(classicSystem);
         final Materializer materializer = Materializer.matFromSystem(system);
 
