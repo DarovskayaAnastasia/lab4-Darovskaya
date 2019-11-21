@@ -29,7 +29,8 @@ public class JSTesterApp {
 
         JSTesterApp jsTesterApp = new JSTesterApp(classicSystem);
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.createRoute(classicSystem).flow(classicSystem, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.createRoute().flow(classicSystem, materializer);
+
         CompletionStage<ServerBinding> futureBinding =
                 http.bindAndHandle(routeFlow,
                         ConnectHttp.toHost("localhost", 8080),
