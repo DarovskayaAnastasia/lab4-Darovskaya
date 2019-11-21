@@ -11,6 +11,6 @@ public class JSTester extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .
+                .matchEquals().build();
     }
 }
