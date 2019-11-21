@@ -1,5 +1,6 @@
 import akka.NotUsed;
 import akka.actor.AbstractActor;
+import akka.actor.ActorSystem;
 
 public class JSTesterApp extends AbstractActor {
     public static void main(String[] args) throws Exception {
