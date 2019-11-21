@@ -27,60 +27,8 @@ public class HTTPRouter {
     }
 
     private Route getResult() {
-
+        return ;
     }
 
-    public Route userRoutes() {
-        return pathPrefix("users", () ->
-                concat(
-                        //#users-get-delete
-                        pathEnd(() ->
-                                concat(
-                                        get(() ->
-                                                onSuccess(getUsers(),
-                                                        users -> complete(StatusCodes.OK, users, Jackson.marshaller())
-                                                )
-                                        ),
-                                        post(() ->
-                                                entity(
-                                                        Jackson.unmarshaller(User.class),
-                                                        user ->
-                                                                onSuccess(createUser(user), performed -> {
-                                                                    log.info("Create result: {}", performed.description);
-                                                                    return complete(StatusCodes.CREATED, performed, Jackson.marshaller());
-                                                                })
-                                                )
-                                        )
-                                )
-                        ),
-                        //#users-get-delete
-                        //#users-get-post
-                        path(PathMatchers.segment(), (String name) ->
-                                concat(
-                                        get(() ->
-                                                        //#retrieve-user-info
-                                                        rejectEmptyResponse(() ->
-                                                                onSuccess(getUser(name), performed ->
-                                                                        complete(StatusCodes.OK, performed.maybeUser, Jackson.marshaller())
-                                                                )
-                                                        )
-                                                //#retrieve-user-info
-                                        ),
-                                        delete(() ->
-                                                        //#users-delete-logic
-                                                        onSuccess(deleteUser(name), performed -> {
-                                                                    log.info("Delete result: {}", performed.description);
-                                                                    return complete(StatusCodes.OK, performed, Jackson.marshaller());
-                                                                }
-                                                        )
-                                                //#users-delete-logic
-                                        )
-                                )
-                        )
-                        //#users-get-post
-                )
-        );
-    }
-    //#all-routes
 }
 
