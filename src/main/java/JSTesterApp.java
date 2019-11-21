@@ -33,17 +33,19 @@ public class JSTesterApp extends AbstractActor {
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.createRoute(classicSystem).flow(classicSystem, materializer);
         CompletionStage<ServerBinding> futureBinding =
-                http.bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
+                http.bindAndHandle(routeFlow,
+                        ConnectHttp.toHost("localhost", 8080),
+                        materializer);
 
         futureBinding.whenComplete((binding, exception) -> {
             if (binding != null) {
                 InetSocketAddress address = binding.localAddress();
-                system.log().info("Server online at http://{}:{}/",
+                classicSystem.log().info("Server online at http://{}:{}/",
                         address.getHostString(),
                         address.getPort());
             } else {
-                system.log().error("Failed to bind HTTP endpoint, terminating system", exception);
-                system.terminate();
+                classicSystem.log().error("Failed to bind HTTP endpoint, terminating system", exception);
+                classicSystem.terminate();
             }
         });
     }
