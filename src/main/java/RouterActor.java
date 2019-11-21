@@ -27,8 +27,8 @@ public class RouterActor {
                             match(NullPointerException.class, e -> restart()).
                             match(IllegalArgumentException.class, e -> stop()).
                             matchAny(o -> escalate()).build());
-    @Override
-    public SupervisorStrategy supervisorStrategy() {
-        return strategy;
+    public RouterActor() {
+        super();
+        
     }
 }
