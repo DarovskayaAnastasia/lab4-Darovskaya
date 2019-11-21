@@ -15,9 +15,7 @@ import akka.stream.javadsl.Flow;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletionStage;
 
-public class JSTesterApp extends AbstractActor {
-
-
+public class JSTesterApp {
 
     public JSTesterApp(ActorSystem system) {
         //
