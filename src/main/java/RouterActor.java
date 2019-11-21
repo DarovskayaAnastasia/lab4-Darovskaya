@@ -2,24 +2,28 @@ import akka.actor.*;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.DeciderBuilder;
+import akka.routing.BalancingPool;
 import scala.concurrent.duration.Duration;
 
 import static akka.actor.SupervisorStrategy.*;
 import static akka.actor.SupervisorStrategy.escalate;
 
 //initializing actor
-public class RouterActor {
+public class RouterActor extends AbstractActor {
+    private final ActorRef storeActor;
+    private final ActorRef testRunner;
+
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-    ActorSystem system = ActorSystem.create("test");
-    ActorRef routerActor = system.actorOf(
-            Props.create(RuterActor.class)
-    );
-    storeActor.tell(
-        new RouterActor.StoreMessage("test", "test"),
-        ActorRef.noSender()
-        );
+//    ActorSystem system = ActorSystem.create("test");
+//    ActorRef routerActor = system.actorOf(
+//            Props.create(RuterActor.class)
+//    );
+//    storeActor.tell(
+//        new RouterActor.StoreMessage("test", "test"),
+//        ActorRef.noSender()
+//        );
 
     private static SupervisorStrategy strategy =
             new OneForOneStrategy(MAX_RETRIES,
@@ -30,6 +34,11 @@ public class RouterActor {
                             matchAny(o -> escalate()).build());
     public RouterActor() {
         super();
-
+        this.storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");
+        this.testRunner = getContext().actorOf(
+                new BalancingPool(5)
+                .withSupervisorStrategy(strategy)
+                .props(TestRunnerActor.props()), "test"
+        )
     }
 }
