@@ -12,6 +12,7 @@ import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletionStage;
 
@@ -22,7 +23,7 @@ public class JSTesterApp {
         //
     }
 
-    static void startHttpServer() {
+    static void startHttpServer() throws IOException {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
         final Http http = Http.get(classicSystem);
