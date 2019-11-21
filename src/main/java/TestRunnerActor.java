@@ -22,4 +22,8 @@ public class TestRunnerActor extends AbstractActor {
                 .match(SomeName.class, m -> {})
                 .build();
     }
+
+    static Props props() {
+        return Props.create(TestActor.class);
+    }
 }
