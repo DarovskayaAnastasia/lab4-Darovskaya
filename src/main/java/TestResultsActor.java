@@ -22,6 +22,7 @@ public class TestResultsActor extends AbstractActor {
     public SupervisorStrategy supervisorStrategy() {
         return strategy;
     }
+    
     @Override
     public AbstractActor.Receive createReceive() {
         return receiveBuilder()
