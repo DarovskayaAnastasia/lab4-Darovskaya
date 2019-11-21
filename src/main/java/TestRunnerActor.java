@@ -1,5 +1,6 @@
 import akka.actor.AbstractActor;
 import akka.actor.OneForOneStrategy;
+import akka.actor.Props;
 import akka.actor.SupervisorStrategy;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
@@ -14,8 +15,9 @@ public class TestRunnerActor extends AbstractActor {
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-    private static TestRunnerActor
+    public TestRunnerActor() {}
 
+    
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
@@ -24,6 +26,6 @@ public class TestRunnerActor extends AbstractActor {
     }
 
     static Props props() {
-        return Props.create(TestActor.class);
+        return Props.create(TestRunnerActor.class);
     }
 }
