@@ -16,7 +16,7 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp {
-//    private final HTTPRoutes userRoutes;
+    private final HTTPRoutes userRoutes;
 
     public JSTesterApp(ActorSystem system) {
         //
@@ -44,5 +44,9 @@ public class JSTesterApp {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> classicSystem.terminate());
+    }
+
+    protected Route createRoute() {
+        return userRoutes.routes();
     }
 }
