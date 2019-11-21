@@ -10,10 +10,10 @@ public class RouterActor {
 
     ActorSystem system = ActorSystem.create("test");
     ActorRef routerActor = system.actorOf(
-            Props.create(routerActor.class)
+            Props.create(RuterActor.class)
     );
     storeActor.tell(
-        new StoreActor.StoreMessage("test", "test"),
+        new RouterActor.StoreMessage("test", "test"),
         ActorRef.noSender()
         );
 
