@@ -1,6 +1,8 @@
 import akka.actor.AbstractActor;
 import akka.actor.OneForOneStrategy;
 import akka.actor.SupervisorStrategy;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
 
