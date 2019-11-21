@@ -5,16 +5,18 @@ import akka.actor.SupervisorStrategy;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
 
+import java.util.HashMap;
+
 import static akka.actor.SupervisorStrategy.*;
 import static akka.actor.SupervisorStrategy.escalate;
 
 public class TestResultsActor extends AbstractActor {
-    private static final int MAX_RETRIES = 10;
+    private Map<String, List<TestResult>> store = new HashMap<>();
 
     @Override
     public Receive createReceive() {
         return receiveBuilder().create()
-                .match(StoreMessage.class, m -> {
+                .match(TestResult.class, m -> {
                     sender().tell(Msg.oneTestResultRequest, self());
                 }).build();
     }
