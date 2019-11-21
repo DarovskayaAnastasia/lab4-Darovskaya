@@ -44,6 +44,6 @@ public class JSTesterApp {
     }
 
     protected Route createRoute() {
-        return userRoutes.routes();
+        return userRoutes.result();
     }
 }

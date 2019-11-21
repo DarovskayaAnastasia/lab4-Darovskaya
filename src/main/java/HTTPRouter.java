@@ -12,6 +12,8 @@ public class HTTPRouter {
         this.router = router;
     }
 
-
+    public Route result() {
+        
+    }
 }
 
