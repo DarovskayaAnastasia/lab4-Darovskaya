@@ -1,8 +1,7 @@
 import akka.actor.ActorRef;
 import akka.http.javadsl.server.Route;
 
-import static akka.http.javadsl.server.Directives.path;
-import static akka.http.javadsl.server.Directives.route;
+import static akka.http.javadsl.server.Directives.*;
 
 public class HTTPRouter {
 
@@ -13,8 +12,7 @@ public class HTTPRouter {
     }
 
     public Route result() {
-        return concat(
-                getResult();
+        return concat(getResult());
     }
 
     private Route getResult() {
