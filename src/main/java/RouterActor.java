@@ -38,7 +38,7 @@ public class RouterActor extends AbstractActor {
         this.testRunner = getContext().actorOf(
                 new BalancingPool(5)
                 .withSupervisorStrategy(strategy)
-                .props(TestRunnerActor.props()), "test"
+                .props(TestRunnerActor.props()), "testing_router"
         )
     }
 }
