@@ -1,5 +1,4 @@
-import akka.actor.OneForOneStrategy;
-import akka.actor.SupervisorStrategy;
+import akka.actor.*;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
 
@@ -10,8 +9,8 @@ public class RouterActor {
     private static final int MAX_RETRIES = 10;
 
     ActorSystem system = ActorSystem.create("test");
-    ActorRef storeActor = system.actorOf(
-            Props.create(StoreActor.class)
+    ActorRef routerActor = system.actorOf(
+            Props.create(routerActor.class)
     );
     storeActor.tell(
         new StoreActor.StoreMessage("test", "test"),
