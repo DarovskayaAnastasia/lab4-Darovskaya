@@ -8,7 +8,7 @@ public class TestResultsActor extends AbstractActor {
     @Override
     public AbstractActor.Receive createReceive() {
         return receiveBuilder()
-                .matchEquals(Msg.oneTestResult, m -> {
+                .match(StoreMessage.class, m -> {
                     sender().tell(Msg.oneTestResultRequest, self());
                 }).build();
     }
