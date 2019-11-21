@@ -13,7 +13,12 @@ public class HTTPRouter {
     }
 
     public Route result() {
-        
+        return concat(
+                getResult();
+    }
+
+    private Route getResult() {
+
     }
 }
 
