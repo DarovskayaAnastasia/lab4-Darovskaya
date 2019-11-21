@@ -37,16 +37,11 @@ public class JSTesterApp {
                         ConnectHttp.toHost("localhost", 8080),
                         materializer);
 
-        futureBinding.whenComplete((binding, exception) -> {
-            if (binding != null) {
-                InetSocketAddress address = binding.localAddress();
-                classicSystem.log().info("Server online at http://{}:{}/",
-                        address.getHostString(),
-                        address.getPort());
-            } else {
-                classicSystem.log().error("Failed to bind HTTP endpoint, terminating system", exception);
-                classicSystem.terminate();
-            }
-        });
+        System.out.println();
+
+        System.in.read();
+        futureBinding
+                .thenCompose(ServerBinding::unbind)
+                .thenAccept(unbound -> classicSystem.terminate());
     }
 }
