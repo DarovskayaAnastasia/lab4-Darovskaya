@@ -45,6 +45,6 @@ public class RouterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestCasesClass.class, )
+                .match(SomeName.class, )
     }
 }
