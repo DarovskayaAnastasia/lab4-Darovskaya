@@ -1,16 +1,21 @@
+import akka.NotUsed;
 import akka.actor.AbstractActor;
 
-public class JSTester extends AbstractActor {
-//    какие компоненты будут проверяться, например
-//    в примере это сообщение. В переменную  GREET кладется приветствие
-//    done отправляется ...
-//    public static enum Msg {
-//        GREET, DONE;
-//    }
+public class JSTesterApp extends AbstractActor {
+    public static void main(String[] args) throws Exception {
+        //#server-bootstrapping
+        Behavior<NotUsed> rootBehavior = Behaviors.setup(context -> {
+            ActorRef<UserRegistry.Command> userRegistryActor =
+                    context.spawn(UserRegistry.create(), "UserRegistry");
 
-    @Override
-    public Receive createReceive() {
-        return receiveBuilder()
-                .matchEquals().build();
+            UserRoutes userRoutes = new UserRoutes(context.getSystem(), userRegistryActor);
+            startHttpServer(userRoutes.userRoutes(), context.getSystem());
+
+            return Behaviors.empty();
+        });
+
+        // boot up server using the route as defined below
+        ActorSystem.create(rootBehavior, "HelloAkkaHttpServer");
+        //#server-bootstrapping
     }
 }
