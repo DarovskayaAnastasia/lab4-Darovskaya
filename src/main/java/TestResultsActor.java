@@ -1,9 +1,7 @@
 import akka.actor.AbstractActor;
 
 public class TestResultsActor extends AbstractActor {
-    public static enum Msg {
-        oneTestResult, oneTestResultRequest
-    }
+    private Map<String, >
 
     @Override
     public AbstractActor.Receive createReceive() {
