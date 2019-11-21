@@ -8,6 +8,7 @@ import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 
@@ -16,21 +17,21 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp extends AbstractActor {
 
-    
 
-    public JSTesterApp(ActorRef router, ActorSystem sys) {
-        routes = new HTTPRouter(sys, router);
+
+    public JSTesterApp(ActorSystem system) {
+        //
     }
 
     static void startHttpServer() {
-        // Akka HTTP still needs a classic ActorSystem to start
-        akka.actor.ActorSystem classicSystem = ActorSystem.create("local_server");
+
+        ActorSystem classicSystem = ActorSystem.create("local_server");
         final Http http = Http.get(classicSystem);
-        final Materializer materializer = Materializer.matFromSystem(system);
+        final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
 
-        JSTesterApp jsTesterApp = new JSTesterApp(router, classicSystem);
+        JSTesterApp jsTesterApp = new JSTesterApp(classicSystem);
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.flow(classicSystem, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.createRoute(classicSystem).flow(classicSystem, materializer);
         CompletionStage<ServerBinding> futureBinding =
                 http.bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
 
