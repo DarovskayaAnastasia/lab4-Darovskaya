@@ -1,2 +1,2 @@
-public class TestGoActor {
+public class TestRunnerActor {
 }
