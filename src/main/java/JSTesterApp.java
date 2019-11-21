@@ -16,6 +16,7 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp {
+    private final HTTPRoutes userRoutes;
 
     public JSTesterApp(ActorSystem system) {
         //
