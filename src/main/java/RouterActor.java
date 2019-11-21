@@ -29,6 +29,6 @@ public class RouterActor {
                             matchAny(o -> escalate()).build());
     public RouterActor() {
         super();
-        
+
     }
 }
