@@ -2,6 +2,7 @@ import akka.actor.*;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.DeciderBuilder;
+import akka.japi.pf.ReceiveBuilder;
 import akka.routing.BalancingPool;
 import scala.concurrent.duration.Duration;
 
@@ -39,6 +40,11 @@ public class RouterActor extends AbstractActor {
                 new BalancingPool(5)
                 .withSupervisorStrategy(strategy)
                 .props(TestRunnerActor.props()), "testing_router"
-        )
+        );
+    }
+    @Override
+    public Receive createReceive() {
+        return ReceiveBuilder.create()
+                .match()
     }
 }
