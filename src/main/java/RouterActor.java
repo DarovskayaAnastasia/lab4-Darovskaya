@@ -24,7 +24,6 @@ public class RouterActor {
             new OneForOneStrategy(MAX_RETRIES,
                     Duration.create("1 minute"),
                     DeciderBuilder.
-                            match(ArithmeticException.class, e -> resume()).
                             match(NullPointerException.class, e -> restart()).
                             match(IllegalArgumentException.class, e -> stop()).
                             matchAny(o -> escalate()).build());
