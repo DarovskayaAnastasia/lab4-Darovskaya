@@ -4,6 +4,7 @@ import akka.event.LoggingAdapter;
 import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.BalancingPool;
+import akka.routing.RoundRobinPool;
 import scala.concurrent.duration.Duration;
 
 import static akka.actor.SupervisorStrategy.*;
@@ -37,8 +38,7 @@ public class RouterActor extends AbstractActor {
         super();
         this.storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");
         this.testRunner = getContext().actorOf(
-                new BalancingPool(5)
-                .withSupervisorStrategy(strategy)
+                new RoundRobinPool(5)
                 .props(TestRunnerActor.props()), "testing_router"
         );
     }
