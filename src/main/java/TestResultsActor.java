@@ -19,7 +19,7 @@ public class TestResultsActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder().create()
                 .match(TestResult.class, m -> {
-                    store.computeIfAbsent(m.getPackageID(), );
+                    store.computeIfAbsent(m.getPackageID(), func ->);
                 }).build();
     }
 
