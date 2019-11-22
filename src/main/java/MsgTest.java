@@ -35,5 +35,10 @@ public class MsgTest {
     public void setPackageID(String packageID) {
         this.packageID = packageID;
     }
+
+    public void setJsScript(String jsScript) {
+        this.jsScript = jsScript;
+    }
+
     
 }
