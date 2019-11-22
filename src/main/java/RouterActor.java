@@ -39,9 +39,17 @@ public class RouterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(MsgTest.class, m -> {
-                    
+                    for (TestData test : m.getTests()) {
+                        testRunner.tell(new MsgTest(
+                                m.getPackageID(),
+                                m.getFunctionName(),
+                                m.getJsScript(),
+                                new TestData[]{test}), self());
+                    }
                 })
-                .match()
+                .match(MsgResult.class, m -> {
+                    storeActor.tell(m, sender());
+                })
                 .matchAny(o -> log.info(o.toString() + o.getClass()))
                 .build();
     }
