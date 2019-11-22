@@ -11,12 +11,12 @@ public class HTTPRouter extends AllDirectives {
 
     public HTTPRouter() {}
 
-    private Route createRoute(ActorRef rootActor) {
+    public final Route createRoute(ActorRef rootActor) {
         return route(
                 path("test", () ->
                         post(() ->
-                                entity(Jackson.unmarshaller(.class), msg -> {
-                                    rootActor.tell(msg, ActorRef.noSender());
+                                entity(Jackson.unmarshaller(.class), m -> {
+                                    rootActor.tell(m, ActorRef.noSender());
                                     return complete("test started");
                                 })
                         )
@@ -24,7 +24,7 @@ public class HTTPRouter extends AllDirectives {
                 path("result", () ->
                         get(() ->
                                 parameter("packageID", packageID -> {
-                                    Future<Object> result = Patterns.ask(rootActor, new (packageID), 2500);
+                                    Future<Object> result = Patterns.ask(rootActor, new MsgResult(packageID), 2500);
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 })
                         )
