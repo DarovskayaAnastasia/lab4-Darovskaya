@@ -25,7 +25,12 @@ public class TestData {
         this.params = params;
     }
 
+    public void setExpectedResult(String expectedResult) {
+        this.expectedResult = expectedResult;
+    }
+
     
+
 
 }
 
