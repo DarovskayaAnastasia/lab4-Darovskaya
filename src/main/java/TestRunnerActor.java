@@ -29,7 +29,8 @@ public class TestRunnerActor extends AbstractActor {
         try {
             engine.eval(m.getJsScript());
             Invocable invocable = (Invocable) engine;
-            return invocable.invokeFunction(m.getFunctionName, params).toString();
+            Object[] params = test.getParams();
+            return invocable.invokeFunction(m.getFunctionName(), params).toString();
         }
         catch (Exception exp) {
             return testResult = "ERROR";
@@ -38,9 +39,9 @@ public class TestRunnerActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(Test.class, m -> {
-                    runTest(m);
-                    getContext().actorSelection(path)
+                .match(MsgTest.class, m -> {
+                    String testResult = runTest(m);
+                    getContext().actorSelection("/user/")
                             .tell(,self());
                 })
                 .build();
