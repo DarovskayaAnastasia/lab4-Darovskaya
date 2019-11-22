@@ -32,7 +32,7 @@ public class JSTesterApp {
 
         HTTPRouter httpRouter = new HTTPRouter();
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = httpRouter.createRoute().flow(classicSystem, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = httpRouter.createRoute(rootActor).flow(classicSystem, materializer);
 
         final CompletionStage<ServerBinding> binding =
                 http.bindAndHandle(routeFlow,
