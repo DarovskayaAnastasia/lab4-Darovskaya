@@ -24,24 +24,24 @@ public class HTTPRouter {
         this.router = router;
     }
 
-    private Route createRoute(ActorSystem system) {
+    private Route createRoute(ActorRef rootActor) {
         return route(
                 path("test", () ->
                         post(() ->
                                 entity(Jackson.unmarshaller(.class), msg -> {
-            RouterActor.tell(msg, ActorRef.noSender());
-            return complete("test started");
-        })
+                                    rootActor.tell(msg, ActorRef.noSender());
+                                    return complete("test started");
+                                })
                         )
                 ),
-        path("result", () ->
-                get(() ->
-                        parameter("packageID", packageID -> {
-                            Future<Object> result = Patterns.ask(RouterActor, new (packageID), 2500);
-                            return completeOKWithFuture(result, Jackson.marshaller());
-                        })
+                path("result", () ->
+                        get(() ->
+                                parameter("packageID", packageID -> {
+                                    Future<Object> result = Patterns.ask(rootActor, new (packageID), 2500);
+                                    return completeOKWithFuture(result, Jackson.marshaller());
+                                })
+                        )
                 )
-        )
         );
     }
 }
