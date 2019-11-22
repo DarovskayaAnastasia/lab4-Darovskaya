@@ -40,5 +40,7 @@ public class MsgTest {
         this.jsScript = jsScript;
     }
 
-    
+    public void setFunctionName(String funcName) {
+        this.funcName = funcName;
+    }
 }
