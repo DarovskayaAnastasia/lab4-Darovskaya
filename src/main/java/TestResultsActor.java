@@ -19,7 +19,7 @@ public class TestResultsActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder().create()
                 .match(TestResult.class, m -> {
-                    sender().tell(m.oneTestResultRequest, self());
+                    store.computeIfAbsent(m.getPackageID(), );
                 }).build();
     }
 
