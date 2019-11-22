@@ -7,4 +7,14 @@ public class MsgTest {
     private String jsScript;
     private String funcName;
     private TestData[] tests;
+
+    public MsgTest(String packageID, String jsScript,
+                   String funcName, TestData[] tests) {
+        this.packageID = packageID;
+        this.jsScript = jsScript;
+        this.funcName = funcName;
+        this.tests = tests;
+    }
+
+    
 }
