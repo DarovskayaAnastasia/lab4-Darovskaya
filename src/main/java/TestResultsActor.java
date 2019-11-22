@@ -1,14 +1,7 @@
 import akka.actor.AbstractActor;
-import akka.actor.OneForOneStrategy;
 import akka.actor.Props;
-import akka.actor.SupervisorStrategy;
-import akka.japi.pf.DeciderBuilder;
-import scala.concurrent.duration.Duration;
-
 import java.util.*;
 
-import static akka.actor.SupervisorStrategy.*;
-import static akka.actor.SupervisorStrategy.escalate;
 
 public class TestResultsActor extends AbstractActor {
     private Map<String, List<TestResult>> store = new HashMap<>();
