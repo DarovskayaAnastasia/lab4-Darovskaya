@@ -24,15 +24,19 @@ public class JSTesterApp {
         //
     }
 
+    public static void main(String[] args) throws IOException {
+        startHttpServer();
+    }
+
     static void startHttpServer() throws IOException {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
         final Http http = Http.get(classicSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
 
-        JSTesterApp jsTesterApp = new JSTesterApp(classicSystem);
+        HTTPRouter httpRouter = new HTTPRouter();
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = jsTesterApp.createRoute().flow(classicSystem, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = httpRouter.createRoute().flow(classicSystem, materializer);
 
         final CompletionStage<ServerBinding> binding =
                 http.bindAndHandle(routeFlow,
@@ -46,10 +50,6 @@ public class JSTesterApp {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> classicSystem.terminate());
-    }
-
-    public static void main(String[] args) {
-        
     }
 
     private Route createRoute(ActorSystem system) {
