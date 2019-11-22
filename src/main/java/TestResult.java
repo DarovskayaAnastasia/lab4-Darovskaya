@@ -71,4 +71,8 @@ public class TestResult {
     public void setParams(Object[] params) {
         this.params = params;
     }
+
+    public void setPackageID(String packageID) {
+        this.packageID = packageID;
+    }
 }
