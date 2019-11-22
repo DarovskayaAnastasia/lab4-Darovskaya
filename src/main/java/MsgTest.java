@@ -20,6 +20,10 @@ public class MsgTest {
         return packageID;
     }
 
+    public String getJsScript() {
+        return jsScript;
+    }
+
     public String getFunctionName() {
         return funcName;
     }
