@@ -22,7 +22,9 @@ public class TestResultsActor extends AbstractActor {
                 })
                 .match(TestResult.class, m -> {
                     List<TestResult> results = store.get(m.getPackageID());
-                    i
+                    if (!results.isEmpty()) {
+                        results.sort(Comparator.comparing(TestResult::getTestName));
+                    }
                 }).build();
     }
 
