@@ -1,18 +1,13 @@
 import akka.actor.AbstractActor;
-import akka.actor.OneForOneStrategy;
 import akka.actor.Props;
-import akka.actor.SupervisorStrategy;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
-import scala.concurrent.duration.Duration;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-import static akka.actor.SupervisorStrategy.*;
 
 public class TestRunnerActor extends AbstractActor {
 
