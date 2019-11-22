@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect
 public class MsgResponse {
 
     private String packageID;
