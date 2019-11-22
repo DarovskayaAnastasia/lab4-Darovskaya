@@ -24,7 +24,7 @@ public class HTTPRouter extends AllDirectives {
                 path("result", () ->
                         get(() ->
                                 parameter("packageID", packageID -> {
-                                    Future<Object> result = Patterns.ask(rootActor, new MsgResult(packageID), 2500);
+                                    Future<Object> result = (Future<Object>) Patterns.ask(rootActor, new MsgResult(packageID), 2500);
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 })
                         )
