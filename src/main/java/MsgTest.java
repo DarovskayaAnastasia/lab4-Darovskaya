@@ -43,4 +43,8 @@ public class MsgTest {
     public void setFunctionName(String funcName) {
         this.funcName = funcName;
     }
+
+    public void setTests(TestData[] tests) {
+        this.tests = tests;
+    }
 }
