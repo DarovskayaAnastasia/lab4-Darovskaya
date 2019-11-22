@@ -5,6 +5,7 @@ import akka.actor.SupervisorStrategy;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,10 @@ public class TestResultsActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder().create()
                 .match(TestResult.class, m -> {
-                    store.computeIfAbsent(m.getPackageID(), func ->);
-                }).build();
+                    store.computeIfAbsent(m.getPackageID(), func -> new ArrayList<>());
+                    store.get(m.getPackageID()).add(m);
+                })
+                .match(,m).build();
     }
 
     static Props props() {
