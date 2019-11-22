@@ -29,7 +29,9 @@ public class TestData {
         this.expectedResult = expectedResult;
     }
 
-    
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
 
 
 }
