@@ -1,12 +1,12 @@
 public class TestResult {
     private String packageID;
     private String testName;
-    private String expectedResult;
-    private Object[] params;
-    private String result;
+//    private String expectedResult;
     private boolean success;
 
     public TestResult() {}
+//    private Object[] params;
+//    private String result;
 
     public TestResult(String packageID, String testName,
                       String expectedResult, String result,
@@ -14,10 +14,10 @@ public class TestResult {
 
         this.packageID = packageID;
         this.testName = testName;
-        this.expectedResult = expectedResult;
-        this.result = result;
+//        this.expectedResult = expectedResult;
+//        this.result = result;
         this.success = success;
-        this.params = params;
+//        this.params = params;
     }
 
     public String getPackageID() {
