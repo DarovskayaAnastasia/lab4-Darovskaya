@@ -20,12 +20,12 @@ public class TestResult {
         this.params = params;
     }
 
-    public String getPackageId() {
-        return packageId;
+    public String getPackageID() {
+        return packageID;
     }
 
-    public void setPackageId(String packageId) {
-        this.packageId = packageId;
+    public void setPackageID(String packageID) {
+        this.packageID = packageID;
     }
 
     public String getTestName() {
@@ -36,7 +36,7 @@ public class TestResult {
         this.testName = testName;
     }
 
-    public boolean success() {
+    public boolean isSuccessful() {
         return success;
     }
 
