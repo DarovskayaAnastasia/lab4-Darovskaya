@@ -11,6 +11,8 @@ public class TestData {
         return testName;
     }
 
-    
+    public String getExpectedResult() {
+        return expectedResult;
+    }
 
 }
