@@ -25,6 +25,9 @@ public class TestResultsActor extends AbstractActor {
                     if (!results.isEmpty()) {
                         results.sort(Comparator.comparing(TestResult::getTestName));
                     }
+                    else {
+                        sender().tell("empty results statement", self());
+                    }
                 }).build();
     }
 
