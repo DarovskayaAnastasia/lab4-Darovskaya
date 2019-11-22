@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class TestData {
 
     private String testName;
-    private String jsScript;
+    private String expectedResult;
     private Object[] params;
 
     public String getTestName() {
@@ -13,6 +13,10 @@ public class TestData {
 
     public String getExpectedResult() {
         return expectedResult;
+    }
+
+    public Object[] getParams() {
+        return params;
     }
 
 }
