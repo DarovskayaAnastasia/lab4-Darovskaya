@@ -16,5 +16,8 @@ public class MsgTest {
         this.tests = tests;
     }
 
+    public String getPackageID() {
+        return packageID;
+    }
     
 }
