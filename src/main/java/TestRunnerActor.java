@@ -21,16 +21,16 @@ public class TestRunnerActor extends AbstractActor {
 
     public TestRunnerActor() {}
 
-    private static test(msg) {
+    private static test(m) {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;
-        return invocable.invokeFunction(functionName, params).toString();
+        return invocable.invokeFunction(m.getFunctionName, params).toString();
     }
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(SomeName.class, m -> {
+                .match(Test.class, m -> {
                     test(m);
                     getContext().actorSelection(path)
                             .tell(,self());
