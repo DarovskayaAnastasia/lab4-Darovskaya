@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({"testName", "success", "expectedResult", "params", "result"})
 
 public class TestResult {
+
     @JsonIgnore
     private String packageID;
 
-    @JsonProperty
+    @JsonProperty("success")
     private String testName;
     private String expectedResult;
     private boolean success;
