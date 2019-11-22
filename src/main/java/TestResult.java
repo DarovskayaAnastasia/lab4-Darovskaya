@@ -36,7 +36,7 @@ public class TestResult {
         this.testName = testName;
     }
 
-    public boolean suc() {
+    public boolean success() {
         return success;
     }
 
