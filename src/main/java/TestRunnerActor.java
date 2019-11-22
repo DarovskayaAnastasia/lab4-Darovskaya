@@ -41,7 +41,7 @@ public class TestRunnerActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(MsgTest.class, m -> {
                     String testResult = runTest(m);
-                    getContext().actorSelection("/user/local_server/")
+                    getContext().actorSelection("/user/local_server/store_actor")
                             .tell(,self());
                 })
                 .build();
