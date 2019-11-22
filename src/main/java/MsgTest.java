@@ -19,5 +19,10 @@ public class MsgTest {
     public String getPackageID() {
         return packageID;
     }
+
+    public String getFunctionName() {
+        return funcName;
+    }
+
     
 }
