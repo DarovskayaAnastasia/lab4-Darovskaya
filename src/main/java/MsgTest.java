@@ -8,6 +8,8 @@ public class MsgTest {
     private String funcName;
     private TestData[] tests;
 
+    public MsgTest() {}
+
     public MsgTest(String packageID, String jsScript,
                    String funcName, TestData[] tests) {
         this.packageID = packageID;
