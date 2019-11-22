@@ -7,6 +7,7 @@ public class TestData {
     private String expectedResult;
     private Object[] params;
 
+//    getters
     public String getTestName() {
         return testName;
     }
@@ -18,6 +19,13 @@ public class TestData {
     public Object[] getParams() {
         return params;
     }
+
+//  setters
+    public void setParams(Object[] params) {
+        this.params = params;
+    }
+
+    
 
 }
 
