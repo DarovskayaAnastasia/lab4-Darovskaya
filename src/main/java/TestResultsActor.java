@@ -23,7 +23,7 @@ public class TestResultsActor extends AbstractActor {
                     store.computeIfAbsent(m.getPackageID(), func -> new ArrayList<>());
                     store.get(m.getPackageID()).add(m);
                 })
-                .match(,m).build();
+                .match(TestResult.class, m -> m.getPackageID()).build();
     }
 
     static Props props() {
