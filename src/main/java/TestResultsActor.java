@@ -24,6 +24,8 @@ public class TestResultsActor extends AbstractActor {
                     List<TestResult> results = store.get(m.getPackageID());
                     if (!results.isEmpty()) {
                         results.sort(Comparator.comparing(TestResult::getTestName));
+
+                        TestResult response = new TestResult(m.getPackageID(), results.toArray(new TestResult[0]))
                     }
                     else {
                         sender().tell("empty results statement", self());
