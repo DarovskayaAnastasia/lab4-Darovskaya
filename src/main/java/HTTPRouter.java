@@ -4,7 +4,7 @@ import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 
-import java.util.concurrent.Future;
+import scala.concurrent.Future;
 
 
 public class HTTPRouter extends AllDirectives {
@@ -24,7 +24,7 @@ public class HTTPRouter extends AllDirectives {
                 path("result", () ->
                         get(() ->
                                 parameter("packageID", packageID -> {
-                                    Future<Object> result = (Future<Object>) Patterns.ask(rootActor, new MsgResult(packageID), 2500);
+                                    Future<Object> result = Patterns.ask(rootActor, new MsgResult(packageID), 2500);
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 })
                         )
