@@ -15,9 +15,7 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp {
 
-    public JSTesterApp(ActorSystem system) {
-        //
-    }
+    public JSTesterApp(ActorSystem system) {}
 
     public static void main(String[] args) throws IOException {
         startHttpServer();
