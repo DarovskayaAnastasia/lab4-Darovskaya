@@ -51,25 +51,4 @@ public class JSTesterApp {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> classicSystem.terminate());
     }
-
-    private Route createRoute(ActorSystem system) {
-        return route(
-                path("test", () ->
-                        post(() ->
-                                entity(Jackson.unmarshaller(.class), msg -> {
-                                    RouterActor.tell(msg, ActorRef.noSender());
-                                    return complete("test started");
-                                })
-                        )
-                ),
-                path("result", () ->
-                        get(() ->
-                                parameter("packageID", packageID -> {
-                                    Future<Object> result = Patterns.ask(RouterActor, new (packageID), 2500);
-                                    return completeOKWithFuture(result, Jackson.marshaller());
-                                })
-                        )
-                )
-        );
-    }
 }

@@ -5,8 +5,10 @@ import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.PathMatchers;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 
 import java.time.Duration;
+import java.util.concurrent.Future;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -22,13 +24,25 @@ public class HTTPRouter {
         this.router = router;
     }
 
-    public Route result() {
-        return concat(getResult());
+    private Route createRoute(ActorSystem system) {
+        return route(
+                path("test", () ->
+                        post(() ->
+                                entity(Jackson.unmarshaller(.class), msg -> {
+            RouterActor.tell(msg, ActorRef.noSender());
+            return complete("test started");
+        })
+                        )
+                ),
+        path("result", () ->
+                get(() ->
+                        parameter("packageID", packageID -> {
+                            Future<Object> result = Patterns.ask(RouterActor, new (packageID), 2500);
+                            return completeOKWithFuture(result, Jackson.marshaller());
+                        })
+                )
+        )
+        );
     }
-
-    private Route getResult() {
-        return ;
-    }
-
 }
 
