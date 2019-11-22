@@ -25,6 +25,7 @@ public class JSTesterApp {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
         ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), "initializing_actor");
+
         final Http http = Http.get(classicSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
 
