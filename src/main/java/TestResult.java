@@ -24,47 +24,39 @@ public class TestResult {
         return packageID;
     }
 
-    public void setPackageID(String packageID) {
-        this.packageID = packageID;
-    }
-
     public String getTestName() {
         return testName;
-    }
-
-    public void setTestName(String testName) {
-        this.testName = testName;
     }
 
     public boolean isSuccessful() {
         return success;
     }
-
-    public void setSuccessful(boolean successful) {
-        success = successful;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getExpectedResult() {
-        return expectedResult;
-    }
-
-    public void setExpectedResult(String expectedResult) {
-        this.expectedResult = expectedResult;
-    }
-
-    public Object[] getParams() {
-        return params;
-    }
-
-    public void setParams(Object[] params) {
-        this.params = params;
-    }
+//
+//    public void setSuccessful(boolean successful) {
+//        success = successful;
+//    }
+//
+//    public String getResult() {
+//        return result;
+//    }
+//
+//    public void setResult(String result) {
+//        this.result = result;
+//    }
+//
+//    public String getExpectedResult() {
+//        return expectedResult;
+//    }
+//
+//    public void setExpectedResult(String expectedResult) {
+//        this.expectedResult = expectedResult;
+//    }
+//
+//    public Object[] getParams() {
+//        return params;
+//    }
+//
+//    public void setParams(Object[] params) {
+//        this.params = params;
+//    }
 }
