@@ -15,7 +15,7 @@ public class HTTPRouter extends AllDirectives {
         return route(
                 path("test", () ->
                         post(() ->
-                                entity(Jackson.unmarshaller(.class), m -> {
+                                entity(Jackson.unmarshaller(MsgTest.class), m -> {
                                     rootActor.tell(m, ActorRef.noSender());
                                     return complete("test started");
                                 })
