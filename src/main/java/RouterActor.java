@@ -11,8 +11,12 @@ import static akka.actor.SupervisorStrategy.escalate;
 
 //initializing actor
 public class RouterActor extends AbstractActor {
-    private final ActorRef storeActor;
-    private final ActorRef testRunner;
+    private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");;
+    private final ActorRef testRunner = getContext().actorOf(
+            new RoundRobinPool(5)
+                    .withSupervisorStrategy(strategy)
+                    .props(TestRunnerActor.props()), "testing_router"
+    );;
 
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
@@ -25,15 +29,7 @@ public class RouterActor extends AbstractActor {
                             match(NullPointerException.class, e -> restart()).
                             match(IllegalArgumentException.class, e -> stop()).
                             matchAny(o -> escalate()).build());
-    public RouterActor() {
-        super();
-        this.storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");
-        this.testRunner = getContext().actorOf(
-                new RoundRobinPool(5)
-                        .withSupervisorStrategy(strategy)
-                        .props(TestRunnerActor.props()), "testing_router"
-        );
-    }
+
 
     @Override
     public Receive createReceive() {
