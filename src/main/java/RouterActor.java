@@ -3,7 +3,6 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
-import akka.routing.BalancingPool;
 import akka.routing.RoundRobinPool;
 import scala.concurrent.duration.Duration;
 
