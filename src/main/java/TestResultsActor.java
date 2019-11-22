@@ -5,10 +5,7 @@ import akka.actor.SupervisorStrategy;
 import akka.japi.pf.DeciderBuilder;
 import scala.concurrent.duration.Duration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static akka.actor.SupervisorStrategy.*;
 import static akka.actor.SupervisorStrategy.escalate;
@@ -23,7 +20,10 @@ public class TestResultsActor extends AbstractActor {
                     store.computeIfAbsent(m.getPackageID(), func -> new ArrayList<>());
                     store.get(m.getPackageID()).add(m);
                 })
-                .match(TestResult.class, m -> m.getPackageID()).build();
+                .match(TestResult.class, m -> {
+                    List<TestResult> results = store.get(m.getPackageID());
+                    results != 0, results.sort(Comparator.comparing(TestResult::getTestName))
+                }).build();
     }
 
     static Props props() {
