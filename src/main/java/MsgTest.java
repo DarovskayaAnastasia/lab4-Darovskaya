@@ -24,5 +24,7 @@ public class MsgTest {
         return funcName;
     }
 
-    
+    public TestData[] getTests() {
+        return tests;
+    }
 }
