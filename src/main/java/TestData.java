@@ -7,6 +7,8 @@ public class TestData {
     private String expectedResult;
     private Object[] params;
 
+    public
+
 //    getters
     public String getTestName() {
         return testName;
