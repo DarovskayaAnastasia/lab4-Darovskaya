@@ -18,14 +18,6 @@ public class RouterActor extends AbstractActor {
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-//    ActorSystem system = ActorSystem.create("test");
-//    ActorRef routerActor = system.actorOf(
-//            Props.create(RuterActor.class)
-//    );
-//    storeActor.tell(
-//        new RouterActor.StoreMessage("test", "test"),
-//        ActorRef.noSender()
-//        );
 
     private static SupervisorStrategy strategy =
             new OneForOneStrategy(MAX_RETRIES,
@@ -39,12 +31,16 @@ public class RouterActor extends AbstractActor {
         this.storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");
         this.testRunner = getContext().actorOf(
                 new RoundRobinPool(5)
-                .props(TestRunnerActor.props()), "testing_router"
+                        .withSupervisorStrategy(strategy)
+                        .props(TestRunnerActor.props()), "testing_router"
         );
     }
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(SomeName.class, )
+                .match()
+                .matchAny(o -> log.info(o.toString() + o.getClass()))
+                .build();
     }
 }
