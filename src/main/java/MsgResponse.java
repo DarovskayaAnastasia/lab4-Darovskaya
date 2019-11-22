@@ -25,4 +25,8 @@ public class MsgResponse {
     public String getPackageID() {
         return packageID;
     }
+
+    public void setPackageID(String packageID) {
+        this.packageID = packageID;
+    }
 }
