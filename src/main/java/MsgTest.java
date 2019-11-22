@@ -31,4 +31,9 @@ public class MsgTest {
     public TestData[] getTests() {
         return tests;
     }
+
+    public void setPackageID(String packageID) {
+        this.packageID = packageID;
+    }
+    
 }
