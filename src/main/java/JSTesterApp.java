@@ -1,6 +1,7 @@
 import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
@@ -31,6 +32,7 @@ public class JSTesterApp {
     static void startHttpServer() throws IOException {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
+        ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), "initializing actor")
         final Http http = Http.get(classicSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
 
