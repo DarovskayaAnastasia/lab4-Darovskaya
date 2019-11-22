@@ -29,4 +29,20 @@ public class MsgResponse {
     public void setPackageID(String packageID) {
         this.packageID = packageID;
     }
+
+    public boolean isSuccessful() {
+        return success;
+    }
+
+    public void setSuccessful(boolean successful) {
+        success = successful;
+    }
+
+    public TestResult[] getResults() {
+        return results;
+    }
+
+    public void setResults(TestResult[] results) {
+        this.results = results;
+    }
 }
