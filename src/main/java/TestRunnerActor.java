@@ -27,7 +27,7 @@ public class TestRunnerActor extends AbstractActor {
         String testResult;
 
         try {
-            engine.eval(m.getJsScript);
+            engine.eval(m.getJsScript());
             Invocable invocable = (Invocable) engine;
             return invocable.invokeFunction(m.getFunctionName, params).toString();
         }
