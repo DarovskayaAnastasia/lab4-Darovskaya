@@ -7,7 +7,7 @@ public class TestData {
     private String expectedResult;
     private Object[] params;
 
-    public
+    public TestData() {}
 
 //    getters
     public String getTestName() {
