@@ -1,18 +1,13 @@
 import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Scheduler;
 import akka.http.javadsl.marshallers.jackson.Jackson;
-import akka.http.javadsl.model.StatusCodes;
-import akka.http.javadsl.server.PathMatchers;
+import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 
-import java.time.Duration;
 import java.util.concurrent.Future;
 
-import static akka.http.javadsl.server.Directives.*;
 
-public class HTTPRouter {
+public class HTTPRouter extends AllDirectives {
 
     public HTTPRouter() {}
 
