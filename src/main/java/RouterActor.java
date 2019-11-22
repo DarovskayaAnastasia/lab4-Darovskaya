@@ -34,11 +34,13 @@ public class RouterActor extends AbstractActor {
                         .props(TestRunnerActor.props()), "testing_router"
         );
     }
-    
+
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(SomeName.class, )
+                .match(MsgTest.class, m -> {
+                    
+                })
                 .match()
                 .matchAny(o -> log.info(o.toString() + o.getClass()))
                 .build();
