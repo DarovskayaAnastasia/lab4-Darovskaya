@@ -26,7 +26,7 @@ public class JSTesterApp {
     static void startHttpServer() throws IOException {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
-        ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), "initializing actor")
+        ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), "initializing actor");
         final Http http = Http.get(classicSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
 
