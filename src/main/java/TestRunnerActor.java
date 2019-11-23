@@ -44,7 +44,7 @@ public class TestRunnerActor extends AbstractActor {
                         engine.eval(m.getJsScript());
                         Invocable invocable = (Invocable) engine;
                         Object[] params = test.getParams();
-                        testResult = invocable.invokeFunction(m.getFunctionName(), params).toString();
+                        testResult = invocable.invokeFunction(m.getFuncName(), params).toString();
                     }
                     catch (Exception exp) {
                         testResult = "ERROR";
