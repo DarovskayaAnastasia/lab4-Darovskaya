@@ -34,7 +34,7 @@ public class OneTest {
         return funcName;
     }
 
-    public TestData[] getTests() {
+    public TestData getTest() {
         return tests;
     }
 
