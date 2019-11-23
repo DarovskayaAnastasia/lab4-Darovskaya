@@ -11,15 +11,19 @@ import static akka.actor.SupervisorStrategy.escalate;
 
 //initializing actor
 public class RouterActor extends AbstractActor {
-    private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");;
-    private final ActorRef testRunner = getContext().actorOf(
-            new RoundRobinPool(5)
-                    .withSupervisorStrategy(strategy)
-                    .props(TestRunnerActor.props()), "testing_router"
-    );;
 
     private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+
+    private final String STORE_ACTOR_NAME = "store_actor";
+    private final String TEST_RUNNER_ACTOR_NAME = "testing_actor";
+
+    private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), STORE_ACTOR_NAME);;
+    private final ActorRef testRunner = getContext().actorOf(
+            new RoundRobinPool(5)
+                    .withSupervisorStrategy(strategy)
+                    .props(TestRunnerActor.props()), TEST_RUNNER_ACTOR_NAME
+    );;
 
 
     private static SupervisorStrategy strategy =
