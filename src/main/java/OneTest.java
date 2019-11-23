@@ -35,7 +35,7 @@ public class OneTest {
     }
 
     public TestData getTest() {
-        return tests;
+        return test;
     }
 
     public void setPackageID(String packageID) {
