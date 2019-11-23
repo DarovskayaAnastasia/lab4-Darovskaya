@@ -12,6 +12,7 @@ import javax.script.ScriptEngineManager;
 public class TestRunnerActor extends AbstractActor {
 
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+    private static String ENGINE_SHORT_NAME = "nashorn";
 
     public TestRunnerActor() {}
 
@@ -35,7 +36,7 @@ public class TestRunnerActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(OneTest.class, m -> {
-                    ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+                    ScriptEngine engine = new ScriptEngineManager().getEngineByName(ENGINE_SHORT_NAME);
                     TestData test = m.getTest();
                     String testResult;
 
