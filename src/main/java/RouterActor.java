@@ -13,7 +13,7 @@ import static akka.actor.SupervisorStrategy.escalate;
 public class RouterActor extends AbstractActor {
 
     private static final int MAX_RETRIES = 10;
-    private static final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+    private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
     private static final String STORE_ACTOR_NAME = "store_actor";
     private static final String TEST_RUNNER_ACTOR_NAME = "testing_actor";
