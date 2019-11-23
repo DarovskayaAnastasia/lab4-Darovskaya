@@ -1,5 +1,6 @@
 package ActorsPackage;
 
+import Common.ActorNames;
 import TestPackage.OneTest;
 import TestPackage.TestData;
 import TestPackage.TestResult;

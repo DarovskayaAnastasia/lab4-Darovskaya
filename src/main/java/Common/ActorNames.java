@@ -1,3 +1,5 @@
+package Common;
+
 public class ActorNames {
 
     public static final String ROOT_ACTOR_NAME = "initializing_actor";

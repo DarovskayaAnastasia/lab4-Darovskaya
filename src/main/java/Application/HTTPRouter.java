@@ -1,3 +1,5 @@
+package Application;
+
 import MessagesPackage.MsgResult;
 import MessagesPackage.MsgTest;
 import akka.actor.ActorRef;

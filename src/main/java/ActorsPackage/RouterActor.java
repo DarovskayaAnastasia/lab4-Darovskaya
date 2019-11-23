@@ -1,5 +1,6 @@
 package ActorsPackage;
 
+import Common.ActorNames;
 import MessagesPackage.MsgResult;
 import MessagesPackage.MsgTest;
 import TestPackage.OneTest;
