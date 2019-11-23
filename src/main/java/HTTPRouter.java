@@ -10,6 +10,7 @@ import scala.concurrent.Future;
 class HTTPRouter extends AllDirectives {
 
     private final int TIMEOUT_MILLIS = 5000;
+    private final String PARAMETER_PACKAGE_ID_NAME = "packageID";
 
     HTTPRouter() {}
 
@@ -27,7 +28,7 @@ class HTTPRouter extends AllDirectives {
                 ),
                 path(RESULT_PATH_SEGMENT, () ->
                         get(() ->
-                                parameter("packageID", packageID -> {
+                                parameter(PARAMETER_PACKAGE_ID_NAME, packageID -> {
                                     Future<Object> result = Patterns.ask(rootActor, new MsgResult(packageID), TIMEOUT_MILLIS);
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 })
