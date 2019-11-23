@@ -48,4 +48,7 @@ public class JSTesterApp {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> classicSystem.terminate());
     }
+    public static String getRootActorName() {
+        return ROOT_ACTOR_NAME;
+    }
 }
