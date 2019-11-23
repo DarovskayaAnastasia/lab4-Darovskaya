@@ -1,5 +1,8 @@
 package ActorsPackage;
 
+import TestPackage.OneTest;
+import TestPackage.TestData;
+import TestPackage.TestResult;
 import akka.actor.AbstractActor;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;

@@ -1,5 +1,6 @@
 package MessagesPackage;
 
+import TestPackage.TestResult;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect

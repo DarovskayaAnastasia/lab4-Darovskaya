@@ -10,7 +10,7 @@ public class MsgResult {
         this.packageID = packageID;
     }
 
-    String getPackageID() {
+    public String getPackageID() {
         return packageID;
     }
 

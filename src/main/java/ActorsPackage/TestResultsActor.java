@@ -1,5 +1,8 @@
 package ActorsPackage;
 
+import MessagesPackage.MsgResponse;
+import MessagesPackage.MsgResult;
+import TestPackage.TestResult;
 import akka.actor.AbstractActor;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
