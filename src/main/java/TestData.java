@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonAutoDetect
 public class TestData {
@@ -7,7 +8,9 @@ public class TestData {
     private String expectedResult;
     private Object[] params;
 
-    public TestData(String testName, String expectedResult, Object[] params) {
+    public TestData(@JsonProperty("testName") String testName,
+                    @JsonProperty("expectedResult") String expectedResult,
+                    @JsonProperty("params") Object[] params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
