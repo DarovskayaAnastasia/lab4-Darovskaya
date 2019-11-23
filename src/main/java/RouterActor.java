@@ -22,13 +22,13 @@ public class RouterActor extends AbstractActor {
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
 
-//    private static SupervisorStrategy strategy =
-//            new OneForOneStrategy(MAX_RETRIES,
-//                    Duration.create("1 minute"),
-//                    DeciderBuilder.
-//                            match(NullPointerException.class, e -> restart()).
-//                            match(IllegalArgumentException.class, e -> stop()).
-//                            matchAny(o -> escalate()).build());
+    private static SupervisorStrategy strategy =
+            new OneForOneStrategy(MAX_RETRIES,
+                    Duration.create("1 minute"),
+                    DeciderBuilder.
+                            match(NullPointerException.class, e -> restart()).
+                            match(IllegalArgumentException.class, e -> stop()).
+                            matchAny(o -> escalate()).build());
 
 
     @Override
