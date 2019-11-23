@@ -40,7 +40,9 @@ public class RouterActor extends AbstractActor {
                                 m.getPackageID(),
                                 m.getJsScript(),
                                 m.getFuncName(),
-                                new TestData[]{test}), self());
+                                new TestData(test.getTestName(),
+                                        test.getExpectedResult(),
+                                        test.getParams())), self());
                     }
                 })
                 .match(MsgResult.class, m -> {
