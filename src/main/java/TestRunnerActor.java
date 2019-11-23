@@ -47,6 +47,7 @@ public class TestRunnerActor extends AbstractActor {
                         testResult = invocable.invokeFunction(m.getFuncName(), params).toString();
                     }
                     catch (Exception exp) {
+                        System.out.println(exp.toString());
                         testResult = "ERROR";
                     }
                     getContext().actorSelection("/user/initializing_actor/store_actor")
