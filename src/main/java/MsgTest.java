@@ -16,8 +16,8 @@ public class MsgTest {
                    @JsonProperty("funcName") String funcName,
                    @JsonProperty("tests") TestData[] tests) {
         this.packageID = packageID;
-        this.funcName = funcName;
         this.jsScript = jsScript;
+        this.funcName = funcName;
         this.tests = tests;
         System.out.println("id = " + packageID + "\n" +  "script = " + jsScript + "\n" +  "function name = " + funcName);
     }

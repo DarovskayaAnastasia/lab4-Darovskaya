@@ -38,8 +38,8 @@ public class RouterActor extends AbstractActor {
                     for (TestData test : m.getTests()) {
                         testRunner.tell(new MsgTest(
                                 m.getPackageID(),
-                                m.getFuncName(),
                                 m.getJsScript(),
+                                m.getFuncName(),
                                 new TestData[]{test}), self());
                     }
                 })
