@@ -4,11 +4,11 @@ public class MsgResult {
 
     public MsgResult() {}
 
-    public MsgResult(String packageID) {
+    MsgResult(String packageID) {
         this.packageID = packageID;
     }
 
-    public String getPackageID() {
+    String getPackageID() {
         return packageID;
     }
 

@@ -15,6 +15,8 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp {
 
+    private final String ROOT_ACTOR_NAME = "initializing_actor";
+
     public JSTesterApp(ActorSystem system) {}
 
     public static void main(String[] args) throws IOException {
