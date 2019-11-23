@@ -1,5 +1,9 @@
 package ActorsPackage;
 
+import MessagesPackage.MsgResult;
+import MessagesPackage.MsgTest;
+import TestPackage.OneTest;
+import TestPackage.TestData;
 import akka.actor.*;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
