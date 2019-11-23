@@ -7,7 +7,11 @@ public class TestData {
     private String expectedResult;
     private Object[] params;
 
-    public TestData() {}
+    public TestData(String testName, String expectedResult, Object[] params) {
+        this.testName = testName;
+        this.expectedResult = expectedResult;
+        this.params = params;
+    }
 
 //    getters
     public String getTestName() {
