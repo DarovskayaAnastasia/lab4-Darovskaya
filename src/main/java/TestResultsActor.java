@@ -13,7 +13,7 @@ public class TestResultsActor extends AbstractActor {
                     store.computeIfAbsent(m.getPackageID(), func -> new ArrayList<>());
                     store.get(m.getPackageID()).add(m);
                 })
-                .match(TestResult.class, m -> {
+                .match(MsgResult.class, m -> {
                     List<TestResult> results = store.get(m.getPackageID());
                     if (!results.isEmpty()) {
                         results.sort(Comparator.comparing(TestResult::getTestName));
