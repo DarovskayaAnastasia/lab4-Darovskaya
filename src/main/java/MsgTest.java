@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonAutoDetect
 public class MsgTest {
@@ -10,8 +11,10 @@ public class MsgTest {
 
     public MsgTest() {}
 
-    public MsgTest(String packageID, String jsScript,
-                   String funcName, TestData[] tests) {
+    public MsgTest(@JsonProperty("packageID") String packageID,
+                   @JsonProperty("jsScript") String jsScript,
+                   @JsonProperty("funcName") String funcName,
+                   @JsonProperty("tests") TestData[] tests) {
         this.packageID = packageID;
         this.jsScript = jsScript;
         this.funcName = funcName;
