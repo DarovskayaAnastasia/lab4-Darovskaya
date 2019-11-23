@@ -10,7 +10,7 @@ import akka.japi.pf.ReceiveBuilder;
 import java.util.*;
 
 
-public class TestResultsActor extends AbstractActor {
+public class StoreActor extends AbstractActor {
     private Map<String, List<TestResult>> store = new HashMap<>();
 
     @Override
@@ -36,7 +36,7 @@ public class TestResultsActor extends AbstractActor {
     }
 
     static Props props() {
-        return Props.create(TestResultsActor.class);
+        return Props.create(StoreActor.class);
     }
 
 }
