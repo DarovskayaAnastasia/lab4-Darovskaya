@@ -1,3 +1,5 @@
+package ActorsPackage;
+
 import akka.actor.AbstractActor;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;

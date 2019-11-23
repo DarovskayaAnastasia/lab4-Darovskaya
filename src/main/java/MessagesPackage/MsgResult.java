@@ -1,3 +1,5 @@
+package MessagesPackage;
+
 public class MsgResult {
 
     private String packageID;

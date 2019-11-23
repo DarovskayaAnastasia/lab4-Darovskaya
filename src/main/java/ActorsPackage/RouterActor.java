@@ -1,3 +1,5 @@
+package ActorsPackage;
+
 import akka.actor.*;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
