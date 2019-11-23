@@ -15,12 +15,12 @@ public class RouterActor extends AbstractActor {
     private static final int MAX_RETRIES = 10;
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
-    private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), ActorNames.STORE_ACTOR_NAME);;
+    private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), ActorNames.STORE_ACTOR_NAME);
     private final ActorRef testRunner = getContext().actorOf(
             new RoundRobinPool(5)
                     .withSupervisorStrategy(strategy)
                     .props(TestRunnerActor.props()), ActorNames.TEST_RUNNER_ACTOR_NAME
-    );;
+    );
 
 
     private static SupervisorStrategy strategy =
