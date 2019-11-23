@@ -50,7 +50,7 @@ public class OneTest {
         this.funcName = funcName;
     }
 
-    public void setTest(TestData[] test) {
+    public void setTest(TestData test) {
         this.test = test;
     }
 }
