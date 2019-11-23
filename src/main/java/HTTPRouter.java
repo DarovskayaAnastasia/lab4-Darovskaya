@@ -7,15 +7,15 @@ import akka.pattern.Patterns;
 import scala.concurrent.Future;
 
 
-public class HTTPRouter extends AllDirectives {
+class HTTPRouter extends AllDirectives {
 
-    private final String TEST_PATH_SEGMENT = "test";
-    private final String RESULT_PATH_SEGMENT = "result";
     private final int TIMEOUT_MILLIS = 5000;
 
     HTTPRouter() {}
 
     final Route createRoute(ActorRef rootActor) {
+        String RESULT_PATH_SEGMENT = "result";
+        String TEST_PATH_SEGMENT = "test";
         return route(
                 path(TEST_PATH_SEGMENT, () ->
                         post(() ->
@@ -34,14 +34,6 @@ public class HTTPRouter extends AllDirectives {
                         )
                 )
         );
-    }
-
-    public String getTEST_PATH_SEGMENT() {
-        return TEST_PATH_SEGMENT;
-    }
-
-    public String getRESULT_PATH_SEGMENT() {
-        return RESULT_PATH_SEGMENT;
     }
 }
 
