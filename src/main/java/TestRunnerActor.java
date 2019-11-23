@@ -16,21 +16,21 @@ public class TestRunnerActor extends AbstractActor {
 
     public TestRunnerActor() {}
 
-    private String runTest(MsgTest m) {
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        TestData test = m.getTests()[0];
-        String testResult;
-
-        try {
-            engine.eval(m.getJsScript());
-            Invocable invocable = (Invocable) engine;
-            Object[] params = test.getParams();
-            return invocable.invokeFunction(m.getFuncName(), params).toString();
-        }
-        catch (Exception exp) {
-            return testResult = "ERROR";
-        }
-    }
+//    private String runTest(MsgTest m) {
+//        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+//        TestData test = m.getTests()[0];
+//        String testResult;
+//
+//        try {
+//            engine.eval(m.getJsScript());
+//            Invocable invocable = (Invocable) engine;
+//            Object[] params = test.getParams();
+//            return invocable.invokeFunction(m.getFunctionName(), params).toString();
+//        }
+//        catch (Exception exp) {
+//            return testResult = "ERROR";
+//        }
+//    }
 
     @Override
     public Receive createReceive() {
