@@ -49,7 +49,7 @@ public class TestRunnerActor extends AbstractActor {
                         System.out.println(exp.toString());
                         testResult = "ERROR";
                     }
-                    getContext().actorSelection("/user/initializing_actor/store_actor")
+                    getContext().actorSelection("/user/initializing_actor/"+ RouterActor.getSTORE_ACTOR_NAME())
                             .tell(new TestResult(
                                     m.getPackageID(),
                                     test.getTestName(),
