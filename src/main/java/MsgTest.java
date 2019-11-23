@@ -26,7 +26,7 @@ public class MsgTest {
         return jsScript;
     }
 
-    public String getFunctionName() {
+    public String getFuncName() {
         return funcName;
     }
 
