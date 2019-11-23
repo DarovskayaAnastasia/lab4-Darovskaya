@@ -52,8 +52,4 @@ public class RouterActor extends AbstractActor {
                 .matchAny(o -> log.info(o.toString() + o.getClass()))
                 .build();
     }
-
-    public static String getSTORE_ACTOR_NAME() {
-        return STORE_ACTOR_NAME;
-    }
 }
