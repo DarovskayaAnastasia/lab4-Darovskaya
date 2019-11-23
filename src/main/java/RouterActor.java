@@ -14,7 +14,7 @@ public class RouterActor extends AbstractActor {
     private final ActorRef storeActor = getContext().actorOf(TestResultsActor.props(), "store_actor");;
     private final ActorRef testRunner = getContext().actorOf(
             new RoundRobinPool(5)
-                    .withSupervisorStrategy(strategy)
+//                    .withSupervisorStrategy(strategy)
                     .props(TestRunnerActor.props()), "testing_router"
     );;
 
@@ -22,13 +22,13 @@ public class RouterActor extends AbstractActor {
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
 
-    private static SupervisorStrategy strategy =
-            new OneForOneStrategy(MAX_RETRIES,
-                    Duration.create("1 minute"),
-                    DeciderBuilder.
-                            match(NullPointerException.class, e -> restart()).
-                            match(IllegalArgumentException.class, e -> stop()).
-                            matchAny(o -> escalate()).build());
+//    private static SupervisorStrategy strategy =
+//            new OneForOneStrategy(MAX_RETRIES,
+//                    Duration.create("1 minute"),
+//                    DeciderBuilder.
+//                            match(NullPointerException.class, e -> restart()).
+//                            match(IllegalArgumentException.class, e -> stop()).
+//                            matchAny(o -> escalate()).build());
 
 
     @Override
