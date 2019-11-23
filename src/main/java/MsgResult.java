@@ -11,4 +11,8 @@ public class MsgResult {
     public String getPackageID() {
         return packageID;
     }
+
+    public void setPackageID(String packageID) {
+        this.packageID = packageID;
+    }
 }
