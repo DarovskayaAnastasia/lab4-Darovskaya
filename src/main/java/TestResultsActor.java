@@ -1,5 +1,7 @@
 import akka.actor.AbstractActor;
 import akka.actor.Props;
+import akka.japi.pf.ReceiveBuilder;
+
 import java.util.*;
 
 
@@ -8,7 +10,7 @@ public class TestResultsActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return receiveBuilder().create()
+        return ReceiveBuilder.create()
                 .match(TestResult.class, m -> {
                     store.computeIfAbsent(m.getPackageID(), func -> new ArrayList<>());
                     store.get(m.getPackageID()).add(m);
