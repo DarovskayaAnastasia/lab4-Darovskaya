@@ -35,9 +35,9 @@ public class TestRunnerActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(MsgTest.class, m -> {
+                .match(OneTest.class, m -> {
                     ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-                    TestData test = m.getTests()[0];
+                    TestData test = m.getTest();
                     String testResult;
 
                     try {
