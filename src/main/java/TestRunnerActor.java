@@ -11,7 +11,6 @@ import javax.script.ScriptEngineManager;
 
 public class TestRunnerActor extends AbstractActor {
 
-    private static final int MAX_RETRIES = 10;
     LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
     public TestRunnerActor() {}
