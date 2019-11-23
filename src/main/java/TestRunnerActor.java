@@ -1,7 +1,5 @@
 import akka.actor.AbstractActor;
 import akka.actor.Props;
-import akka.event.Logging;
-import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.Invocable;
@@ -10,7 +8,7 @@ import javax.script.ScriptEngineManager;
 
 
 public class TestRunnerActor extends AbstractActor {
-    
+
     private static String ENGINE_SHORT_NAME = "nashorn";
 
     public TestRunnerActor() {}
