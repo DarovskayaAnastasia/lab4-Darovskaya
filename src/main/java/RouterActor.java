@@ -36,7 +36,7 @@ public class RouterActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(MsgTest.class, m -> {
                     for (TestData test : m.getTests()) {
-                        testRunner.tell(new MsgTest(
+                        testRunner.tell(new OneTest(
                                 m.getPackageID(),
                                 m.getJsScript(),
                                 m.getFuncName(),
