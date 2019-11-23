@@ -10,8 +10,7 @@ import javax.script.ScriptEngineManager;
 
 
 public class TestRunnerActor extends AbstractActor {
-
-    LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
+    
     private static String ENGINE_SHORT_NAME = "nashorn";
 
     public TestRunnerActor() {}
