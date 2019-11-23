@@ -19,6 +19,9 @@ public class MsgTest {
         this.jsScript = jsScript;
         this.funcName = funcName;
         this.tests = tests;
+        System.out.println(
+                "id = " + packageID + "\n" +  "script = " + jsScript + "\n" +  "function name = " + funcName + "\n" +  "tests = " + tests.toString();
+        );
     }
 
     public String getPackageID() {
