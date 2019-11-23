@@ -6,7 +6,7 @@ public class MsgResult {
 
     public MsgResult() {}
 
-    MsgResult(String packageID) {
+    public MsgResult(String packageID) {
         this.packageID = packageID;
     }
 
