@@ -15,18 +15,18 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTesterApp {
 
-    private final String ROOT_ACTOR_NAME = "initializing_actor";
+    private static final String ROOT_ACTOR_NAME = "initializing_actor";
 
-    public JSTesterApp(ActorSystem system) {}
+    public JSTesterApp() {}
 
     public static void main(String[] args) throws IOException {
         startHttpServer();
     }
 
-    static void startHttpServer() throws IOException {
+    private static void startHttpServer() throws IOException {
 
         ActorSystem classicSystem = ActorSystem.create("local_server");
-        ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), "initializing_actor");
+        ActorRef rootActor = classicSystem.actorOf(Props.create(RouterActor.class), ROOT_ACTOR_NAME);
 
         final Http http = Http.get(classicSystem);
         final ActorMaterializer materializer = ActorMaterializer.create(classicSystem);
